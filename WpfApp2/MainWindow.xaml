@@ -1,0 +1,148 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.9*"></RowDefinition>
+            <RowDefinition Height="1.8*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBlock Margin="180,0,480,0" Text="Tap.az  Bina.az  Boss.az" FontSize="13"  Foreground="Gray" Padding="3"></TextBlock>
+            <TextBlock Margin="330,0,330,0" Text="Destek: (012)505-77-55" FontSize="13"  Foreground="Black" Padding="3"></TextBlock>
+            <TextBlock Margin="180,0,480,0" Text="Tap.az  Bina.az  Boss.az" FontSize="13"  Foreground="Gray" Padding="3"></TextBlock>
+            <TextBlock Margin="470,0,100,0" Text="Yardim RU   Secilmisler  Giris" FontSize="13"  Foreground="Gray" Padding="3"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="OrangeRed">
+            <TextBlock Margin="140,0,550,0" Padding="7" FontWeight="Bold" FontSize="17" Foreground="White">TURBO.AZ</TextBlock>
+            <TextBlock Margin="230,0,150,0" Padding="8" FontSize="14" Foreground="White" Text=" Butun elanlar  Salonlar   Moto   Ehtiyyat hisseleri ve aksesuarlar"></TextBlock>
+
+            <Button Panel.ZIndex="1"  Margin="674,0,42,10" Background="Green" Foreground="White" FontSize="15" BorderThickness="0" >Teze Elan</Button>
+
+        </Grid>
+
+        <StackPanel Background="White" Grid.Row="1" Margin="0,39,0,1" Grid.RowSpan="2">
+
+            <StackPanel Height="30" Orientation="Horizontal" Margin="20 10 0 0">
+
+                <ComboBox x:Name="MarkaCBX" Width="100" BorderThickness="0" Margin="20  2 2  2" SelectionChanged="MarkaCBX_SelectionChanged"/>
+
+
+
+                <ComboBox BorderThickness="0"  Width="100"  x:Name="ModelCBX"  Margin="20 2 2 2"></ComboBox>
+
+
+
+                <Button BorderThickness="0"  Width="70"  x:Name="YeniHamsiBTN" Margin="20 2 2 2" Content="Hamsi" />
+
+
+
+                <Button BorderThickness="0"  Width="70"  x:Name="YeniBTN"  Margin="20 2 2 2" Content="Teze"  />
+
+
+
+                <Button BorderThickness="0"  Width="70"   x:Name="KohneBTN"  Margin="20 2 2 2" Content="Kohne"  />
+
+
+
+                <ComboBox BorderThickness="0" Width="100"  x:Name="CityCBX"  Margin="20,2,2,2"/>
+
+            </StackPanel>
+
+
+
+
+            <StackPanel Height="30" Orientation="Horizontal" Margin="20 10 0 0">
+
+
+
+                <TextBox BorderThickness="0"  Padding="2"   x:Name="Price" Margin="20 2 2 2" Width="70" >Qiymet Max</TextBox>
+
+
+
+                <TextBox x:Name="YEARmINTBX" Padding="2"  BorderThickness="0"  Margin="20 2 2 2" Width="51" >Il Min</TextBox>
+
+
+
+                <TextBox x:Name="YEARmaxTBX"  Padding="3" BorderThickness="0"  Margin="20 1 1 1" Width="70" >Il Max</TextBox>
+
+
+                <TextBox  x:Name="EnginemTBX"  Padding="3"  BorderThickness="0"  Margin="20 1 1 1" Width="70" >Motor</TextBox>
+
+
+
+                <ComboBox  x:Name="AccBoxCBX" BorderThickness="0" Margin="10 1 1 1" Width="110" ></ComboBox>
+
+
+                <ComboBox  x:Name="ColorTBX" BorderThickness="0" Margin="20  1 1 1" Width="100" ></ComboBox>
+
+
+
+
+                <ComboBox  x:Name="fUELTYPETBX" BorderThickness="0" Margin="20 1 1 1" Width="100" ></ComboBox>
+
+
+
+
+
+
+
+            </StackPanel>
+
+        </StackPanel>
+
+        <Grid Grid.Row="3">
+            <ListView Name="CarListView" BorderThickness="1" BorderBrush="LightGray"  Grid.Row="1" ItemsSource="{Binding cars}" Background="#FFFFFAFA"  >
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemTemplate  >
+                    <DataTemplate>
+                        <Border CornerRadius="8" BorderThickness="1" BorderBrush="LightGray" >
+                            <StackPanel Background="White" Width="170" Margin="2 2 2 2">
+                                <StackPanel  Height="130" Width="170">
+                                    <Image x:Name="imageee" Source="{Binding Shekil.Shekil1}"  Height="150" Width="270" Margin="0 0 0 0 " />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Margin="0 0 0 0" FontSize="20" FontWeight="Bold" Text="{Binding Qiymet.Qiymet}"></TextBlock>
+                                        <TextBlock Margin="0 0 0 0" FontSize="20" FontWeight="Bold" Text="$"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="0 0 0 0" FontSize="15" Text="{Binding Marka.MarkaName}"></TextBlock>
+                                        <TextBlock Margin="5 0 0 0" FontSize="15"   Text="{Binding Model.ModelName}"></TextBlock>
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="0 0 0 0" FontSize="14"  Text="{Binding Il.Il}"></TextBlock>
+                                        <TextBlock Margin="0 0 0 0" FontSize="14"  Text=","></TextBlock>
+                                        <TextBlock Margin="0 0 0 0" FontSize="14"  Text="{Binding Motor.Motor1}"></TextBlock>
+                                        <TextBlock Margin="0 0 0 0" FontSize="14"  Text="L"></TextBlock>
+
+                                    </StackPanel>
+
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+
+    </Grid>
+</Window>
